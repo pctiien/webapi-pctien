@@ -1,5 +1,6 @@
 using api.Data;
 using api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -61,6 +62,7 @@ namespace api.Controllers
             }
             
         }
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult DeleteById(int id)
         {

@@ -1,5 +1,6 @@
 using System.Configuration;
 using api.Data;
+using api.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,8 @@ static void ConfigureServices(WebApplicationBuilder builder)
     {
         opt.UseMySQL(builder.Configuration.GetConnectionString("MyDb"));
     });
+    services.AddScoped<ICategoryRepository,CategoryRepository>();
+    services.AddAuthentication();
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen();
 }
