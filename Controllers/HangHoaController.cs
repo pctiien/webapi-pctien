@@ -12,7 +12,7 @@ namespace webapi.Controllers
         public IActionResult GetAll()
         {
             return Ok(ds_HangHoa);
-        }
+        }                                           
         [HttpGet("{id}")]
         public IActionResult GetById(string id)
         {

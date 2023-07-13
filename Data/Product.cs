@@ -21,6 +21,7 @@ namespace api.Data
         [Range(0,100)]
         public double Discount{set;get;}
         public int? cateId{set;get;}
+        
         [ForeignKey("cateId")]
         public Category Category{set;get;}
         public ICollection<DonHangChiTiet> DonHangChiTiet{set;get;}

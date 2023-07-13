@@ -35,8 +35,6 @@ namespace api.Controllers
         [HttpPost]
         public IActionResult CreateNewCategory(CategoryModel model)
         {
-            try
-            {
                 var newCate = new Category
                 {
                     cateName = model.CategoryName
@@ -45,11 +43,6 @@ namespace api.Controllers
                 _dbContext.Add(newCate);
                 _dbContext.SaveChanges();
                 return Ok(newCate);
-            }
-            catch
-            {
-                return BadRequest();
-            }
         }
         [HttpPut("{id}")]
         public IActionResult UpdateCategoryById(int id,CategoryModel model)
@@ -67,6 +60,22 @@ namespace api.Controllers
                 return BadRequest();
             }
             
+        }
+        [HttpDelete("{id}")]
+        public IActionResult DeleteById(int id)
+        {
+            try
+            {
+                var cate = _dbContext.Categories.SingleOrDefault(cg=>cg.cateId==id);
+                if(cate==null) return StatusCode(StatusCodes.Status404NotFound);
+                _dbContext.Categories.Remove(cate);
+                _dbContext.SaveChanges();
+                return StatusCode(StatusCodes.Status200OK,cate);
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest);
+            }
         }
     }
 }
