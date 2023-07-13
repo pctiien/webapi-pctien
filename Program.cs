@@ -1,3 +1,7 @@
+using System.Configuration;
+using api.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,6 +22,10 @@ static void ConfigureServices(WebApplicationBuilder builder)
 {
     var services = builder.Services;
     services.AddControllers();
+    services.AddDbContext<MyDbContext>(opt=>
+    {
+        opt.UseMySQL(builder.Configuration.GetConnectionString("MyDb"));
+    });
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen();
 }
