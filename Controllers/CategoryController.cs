@@ -62,7 +62,6 @@ namespace api.Controllers
             }
             
         }
-        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult DeleteById(int id)
         {

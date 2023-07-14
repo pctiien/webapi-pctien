@@ -28,7 +28,7 @@ static void ConfigureServices(WebApplicationBuilder builder)
         opt.UseMySQL(builder.Configuration.GetConnectionString("MyDb"));
     });
     services.AddScoped<ICategoryRepository,CategoryRepository>();
-    services.AddAuthentication();
+    services.AddScoped<IHangHoaRepository,HangHoaRepository>();
     services.AddEndpointsApiExplorer();
     services.AddSwaggerGen();
 }
