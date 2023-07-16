@@ -34,12 +34,12 @@ namespace api.Controllers
             }
         }
         [HttpPost]
+        [Authorize]
         public IActionResult CreateNewCategory(CategoryModel model)
         {
                 var newCate = new Category
                 {
                     cateName = model.CategoryName
-
                 };
                 _dbContext.Add(newCate);
                 _dbContext.SaveChanges();

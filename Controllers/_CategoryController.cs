@@ -1,6 +1,7 @@
 using api.Models;
 using api.Services;
 using api.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -42,6 +43,7 @@ namespace api.Controllers
             }
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Create(CategoryModel model) 
         {
             try

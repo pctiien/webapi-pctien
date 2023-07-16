@@ -9,8 +9,14 @@ namespace api.Data
         public DbSet<Category> Categories{set;get;}
         public DbSet<DonHang> DonHangs{set;get;}
         public DbSet<DonHangChiTiet> DonHangChiTiets{set;get;}
+        public DbSet<User> Users{set;get;}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>(entity=>{
+                entity.HasIndex(u=>u.UserName).IsUnique();
+                entity.Property(u=>u.Name).IsRequired().HasMaxLength(150);
+                entity.Property(u=>u.Email).IsRequired().HasMaxLength(150);
+            });
             modelBuilder.Entity<DonHang>(entity=>{
                 entity.ToTable("DonHang");
                 entity.HasKey("MaDonHang");

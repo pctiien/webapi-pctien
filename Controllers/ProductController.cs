@@ -1,3 +1,4 @@
+using api.Data;
 using api.Models;
 using api.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -43,8 +44,8 @@ namespace api.Controllers
          {
             try
             {
-                var res = _IHangHoaRepository.Paging(page);
-                return Ok(res);
+                var paging = _IHangHoaRepository.Paging(page);
+                return Ok(paging);
             }
             catch (System.Exception)
             {
