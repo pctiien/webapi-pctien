@@ -10,6 +10,7 @@ namespace api.Data
         public DbSet<DonHang> DonHangs{set;get;}
         public DbSet<DonHangChiTiet> DonHangChiTiets{set;get;}
         public DbSet<User> Users{set;get;}
+        public DbSet<RefreshToken> RefreshTokens{set;get;}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>(entity=>{

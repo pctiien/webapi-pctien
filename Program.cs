@@ -33,6 +33,7 @@ static void ConfigureServices(WebApplicationBuilder builder)
     });
     services.AddScoped<ICategoryRepository,CategoryRepository>();
     services.AddScoped<IHangHoaRepository,HangHoaRepository>();
+    services.AddScoped<IUserRepository,UserRepository>();
     services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
     // JWT ScretKey
     var secretKey = builder.Configuration.GetSection("AppSettings").GetSection("SecretKey").Value;
